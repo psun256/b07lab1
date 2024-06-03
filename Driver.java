@@ -1,16 +1,30 @@
+import java.io.*;
+import java.util.*;
+
 public class Driver {
-    public static void main(String [] args) {
-        Polynomial p = new Polynomial();
-        System.out.println(p.evaluate(3));
-        double [] c1 = {6,0,0,5};
-        Polynomial p1 = new Polynomial(c1);
-        double [] c2 = {0,-2,0,0,-9};
-        Polynomial p2 = new Polynomial(c2);
-        Polynomial s = p1.add(p2);
-        System.out.println("s(0.1) = " + s.evaluate(0.1));
-        if(s.hasRoot(1))
-            System.out.println("1 is a root of s");
-        else
-            System.out.println("1 is not a root of s");
+    public static void main(String [] args) throws IOException {
+        int [] a = new int[5];
+        int [] b = Arrays.copyOfRange(a, 0, 0);
+        
+        Polynomial p = new Polynomial(new double[]{1, 2, 3}, new int[]{1, 2, 3});
+        Polynomial q = new Polynomial(new double[]{1, 2, 3}, new int[]{1, 2, 3});
+        Polynomial r = p.multiply(q);
+        Polynomial r1 = p.add(q);
+
+        System.out.println(r);
+        System.out.println(r1);
+        System.out.println(Polynomial.parse("x"));
+        System.out.println(Polynomial.parse("1"));
+        System.out.println(Polynomial.parse("0"));
+        System.out.println(Polynomial.parse(Polynomial.parse("5-3x2+7x8")));
+        Polynomial adsf = new Polynomial("5-3x2+7x8");
+        System.out.println(adsf);
+        adsf.saveToFile("amogus.txt");
+        File ff = new File("amogus.txt");
+        
+        Polynomial asdf = new Polynomial(ff);
+        Polynomial amogus = new Polynomial("-5");
+        asdf = asdf.add(amogus);
+        System.out.println(asdf);
     }
 }
